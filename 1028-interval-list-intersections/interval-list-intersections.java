@@ -6,14 +6,9 @@ class Solution {
             int[] l1 = firstList[i];
             int[] l2 = secondList[j];
             int st1 = l1[0], ed1 = l1[1], st2 = l2[0], ed2 = l2[1];
-            if(st1 <= st2 && ed1 >= st2){
-                int ansEd = Math.min(ed1, ed2);
-                int[] currAns = new int[]{st2, ansEd};
-                ls.add(currAns);
-            }else if(st2 <= st1 && ed2 >= st1){
-                int ansEd = Math.min(ed1, ed2);
-                int[] currAns = new int[]{st1, ansEd};
-                ls.add(currAns);
+            int maxSt = Math.max(st1, st2), minEd = Math.min(ed1, ed2);
+            if(maxSt <= minEd){
+                ls.add(new int[]{maxSt, minEd});
             }
             if(ed1 <= ed2) i++;
             else j++;
