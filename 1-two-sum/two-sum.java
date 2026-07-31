@@ -23,17 +23,5 @@ class Solution {
         }
 
         return new int[]{i,j};
-        // HashMap<Integer, Integer> hm = new HashMap<>(); // <num, freq>
-        // for(int i = 0;i<nums.length;i++){
-        //     hm.put(nums[i], hm.getOrDefault(nums[i],0)+1);
-        // }
-        // for(int i = 0;i<nums.length;i++){
-        //     int num = nums[i];
-        //     int diff = target - num;
-        //     int freq = hm.getOrDefault(diff, 0);
-        //     if(freq != 0){
-        //         if(num == diff && freq > 1) return 
-        //     }
-        // }
     }
 }
