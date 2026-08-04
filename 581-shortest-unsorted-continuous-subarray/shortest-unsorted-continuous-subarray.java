@@ -1,27 +1,20 @@
 class Solution {
     public int findUnsortedSubarray(int[] nums) {
-         int n = nums.length;
-        int left = n, right = 0;
-
-        // Monotonic increasing stack (left boundary)
-        Stack<Integer> stack = new Stack<>();
-        for (int i = 0; i < n; i++) {
-            while (!stack.isEmpty() && nums[stack.peek()] > nums[i]) {
-                left = Math.min(left, stack.pop());
+        int n = nums.length, left = -1, right = -1;
+        int minSeen = Integer.MAX_VALUE, maxSeen = Integer.MIN_VALUE;
+        for(int i = 0; i < n; i++){
+            maxSeen = Math.max(nums[i], maxSeen);
+            if(nums[i] < maxSeen){  //means it should be increasing(from left to right) but we seen a rebel element
+                right = i;
             }
-            stack.push(i);
         }
-
-        stack.clear();
-
-        // Monotonic decreasing stack (right boundary)
-        for (int i = n - 1; i >= 0; i--) {
-            while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
-                right = Math.max(right, stack.pop());
+        if(right == -1) return 0;
+        for(int i = n-1; i >= 0; i--){
+            minSeen = Math.min(nums[i], minSeen);
+            if(nums[i] > minSeen){  //means it should be decreasing(from right to left) but we seen a rebel element
+                left = i;
             }
-            stack.push(i);
         }
-
-        return right > left ? right - left + 1 : 0;
+        return right - left + 1;
     }
 }
