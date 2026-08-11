@@ -26,8 +26,8 @@ class Solution {
         }
         int maxRepeat = 0;
         // System.out.println(freqHm);
-        for(String str: freqHm.keySet()){
-            maxRepeat = Math.max(maxRepeat, freqHm.get(str));
+        for(int repeat: freqHm.values()){
+            maxRepeat = Math.max(maxRepeat, repeat);
         }
         return maxRepeat;
     }
