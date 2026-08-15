@@ -11,13 +11,13 @@ class Solution {
             if(nums[i] == 1) curr1++;
         }
         int max1 = curr1;
-        for(int i = windowSize; i < n+windowSize - 1;i++){
-            int prevEle = nums[i - windowSize];
-            if(prevEle == 1) curr1--;
-            int currEle = nums[i % n];
-            if(currEle == 1) curr1++;
+        for(int i = windowSize; i<n+windowSize;i++){
+            int prevIdx = (i-windowSize) % n;
+            int currIdx = i % n;
+            if(nums[prevIdx] == 1) curr1--;
+            if(nums[currIdx] == 1) curr1++;
             if(curr1 > max1) max1 = curr1;
         }
-        return windowSize-max1;
+        return windowSize - max1;
     }
 }
