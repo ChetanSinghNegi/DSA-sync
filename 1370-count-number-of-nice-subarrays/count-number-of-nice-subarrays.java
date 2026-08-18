@@ -4,19 +4,19 @@ class Solution {
 
         map.put(0, 1);
 
-        int prefix = 0;
+        int currSum = 0;
         int count = 0;
 
         for (int num : nums) {
             if (num % 2 != 0) {
-                prefix++;
+                currSum++;
             }
 
-            if (map.containsKey(prefix - k)) {
-                count += map.get(prefix - k);
+            if (map.containsKey(currSum - k)) {
+                count += map.get(currSum - k);
             }
 
-            map.put(prefix, map.getOrDefault(prefix, 0) + 1);
+            map.put(currSum, map.getOrDefault(currSum, 0) + 1);
         }
 
         return count;
