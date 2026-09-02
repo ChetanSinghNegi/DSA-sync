@@ -46,8 +46,8 @@ class Solution {
             graph.addEdge(edge[0],edge[1]);
         }
         boolean[] vis = new boolean[n];
-        // boolean isFound = graph.dfs(source, destination, vis);
-        boolean isFound = graph.bfs(source, destination, vis);
+        boolean isFound = graph.dfs(source, destination, vis);
+        // boolean isFound = graph.bfs(source, destination, vis);
         return isFound;
     }
 }
