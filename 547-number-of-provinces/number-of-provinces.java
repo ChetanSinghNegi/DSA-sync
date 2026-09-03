@@ -1,19 +1,19 @@
 class Solution {
     class Graph{
-        ArrayList<ArrayList<Integer>> adjList;
+        ArrayList<Integer>[] adjList;
         Graph(int n){
-            adjList = new ArrayList<>();
+            adjList = new ArrayList[n];
             for(int i = 0; i<n;i++){
-                adjList.add(new ArrayList<>());
+                adjList[i] = new ArrayList<>();
             }
         }
         public void addEdge(int src, int dest){
-            adjList.get(src).add(dest);
+            adjList[src].add(dest);
         }
         public void dfs(int src, boolean[] vis){
             if(vis[src] == true) return;
             vis[src] = true;
-            for(int vertice: adjList.get(src)){
+            for(int vertice: adjList[src]){
                 if(vis[vertice] != true) dfs(vertice, vis);
             }
         }
